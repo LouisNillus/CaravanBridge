@@ -18,7 +18,7 @@ public class Element : MonoBehaviour
     void Update()
     {
         transform.right = secondBlock.position - transform.position;
-        transform.localScale = new Vector2(Vector2.Distance(firstBlock.position, secondBlock.position) * 7, 1);
+        transform.localScale = new Vector2(Vector2.Distance(firstBlock.position, secondBlock.position) * 5.5f, 3.5f);
         transform.position = new Vector2((firstBlock.position.x + secondBlock.position.x) / 2, (firstBlock.position.y + secondBlock.position.y) / 2);
         if (type == ElementsType.Tendeur)
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1c212ef37ff6248a4bf9bfa26f4be7, type: 3}
   m_Name: Caravan
   m_EditorClassIdentifier: 
-  sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: 0525400773c4b1449a245bd3553a087f, type: 3}
   direction: 1
   forceApplied: 2
   mass: 1
