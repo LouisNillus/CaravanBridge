@@ -40,11 +40,13 @@ public class WinZone : MonoBehaviour
             case RacerTyper.Reward.Wood:
                 _vp.wood += _mb.racerType.amount;
                 break;
-            case RacerTyper.Reward.Money:
-                _vp.money += _mb.racerType.amount;
-                break;
-            case RacerTyper.Reward.Nails:
+            case RacerTyper.Reward.Gold:
                 _vp.nails += _mb.racerType.amount;
+                break;
+            case RacerTyper.Reward.Fabric:
+                _vp.nails += _mb.racerType.amount;
+                break;
+            case RacerTyper.Reward.NoReward:
                 break;
         }
     }

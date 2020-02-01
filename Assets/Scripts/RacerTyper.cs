@@ -33,7 +33,7 @@ public class RacerTyper : ScriptableObject
     [Range(0, 100)]
     public int amount;
 
-    //public enum TypeOfRacer {Caravan, Goldy, Boss}
+    //public enum TypeOfRacer {Caravan, Goldy, Enemy}
     public enum Direction {Left, Right}
-    public enum Reward {NoReward, Wood, Iron, Nails, Money}
+    public enum Reward {NoReward, Wood, Iron, Fabric, Gold}
 }

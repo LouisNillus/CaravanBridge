@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   direction: 0
-  forceApplied: 100
+  forceApplied: 2
   mass: 1
   gravity: 1
   minDmg: 0
   maxDmg: 0
   reward: 1
-  amount: 26
+  amount: 24

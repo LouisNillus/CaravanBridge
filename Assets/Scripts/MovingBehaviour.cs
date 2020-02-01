@@ -32,7 +32,7 @@ public class MovingBehaviour : MonoBehaviour
     //FixedUpdate
     void FixedUpdate()
     {
-        transform.position += new Vector3(Time.deltaTime * racerType.forceApplied, 0, 0);
+        transform.position += new Vector3( -1 * Time.deltaTime * racerType.forceApplied, 0, 0);
         //Movement();
         //MovementBis();
     }
