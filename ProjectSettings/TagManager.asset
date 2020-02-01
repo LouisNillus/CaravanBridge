@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Blocks
+    uniqueID: 703924901
+    locked: 0
+  - name: Elements
+    uniqueID: 588593933
+    locked: 0
+  - name: Background
+    uniqueID: 885321021
+    locked: 0

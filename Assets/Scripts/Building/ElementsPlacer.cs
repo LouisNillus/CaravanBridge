@@ -17,6 +17,13 @@ public class ElementsPlacer : MonoBehaviour
     Transform secondBlock;
     public Transform actualBlock;
 
+    [SerializeField] Transform ElementsParent = default;
+    [SerializeField] GameObject RopePrefab = default;
+    [SerializeField] GameObject RodPrefab = default;
+    [SerializeField] GameObject TendeurPrefab = default;
+    [SerializeField] GameObject PlankPrefab = default;
+    GameObject NewElement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +50,7 @@ public class ElementsPlacer : MonoBehaviour
             isFirstBlockSelected = true;
         }
     }
+
     private void MouseUp()
     {
         if (actualBlock == null) { ResetSelection(); return; }
@@ -54,7 +62,7 @@ public class ElementsPlacer : MonoBehaviour
                 ResetSelection();
                 return;
             }
-            Debug.Log("Sedond Block Selected");
+            Debug.Log("Second Block Selected");
             secondBlock = actualBlock;
             isSecondBlockSelected = true;
         }
@@ -64,11 +72,13 @@ public class ElementsPlacer : MonoBehaviour
     {
         if (isPlacing && isFirstBlockSelected && !isSecondBlockSelected)
         {
+            Debug.DrawLine(firstBlock.position, mousePos, Color.blue);
         }
         else if (isPlacing && isFirstBlockSelected && isSecondBlockSelected)
         {
             isPlacing = false;
-
+            Debug.DrawLine(firstBlock.position, secondBlock.position, Color.red);
+            PlaceTendeur();
             ResetSelection();
         }
 
@@ -80,5 +90,51 @@ public class ElementsPlacer : MonoBehaviour
         secondBlock = null;
         isFirstBlockSelected = false;
         isSecondBlockSelected = false;
+        isPlacing = true;
+    }
+
+
+    //DistanceJoint2D = barre orientable
+    //DistanceJoint2D avec max distance only = corde
+    //DistanceJoint2D avec max distance only & !auto configure distance & distance -- = tendeur
+    //FixedJoint2D = Planche
+
+    void PlaceRope()
+    {
+        firstBlock.gameObject.AddComponent<DistanceJoint2D>();
+        firstBlock.GetComponent<DistanceJoint2D>().connectedBody = secondBlock.GetComponent<Rigidbody2D>();
+        firstBlock.GetComponent<DistanceJoint2D>().enableCollision = true;
+        firstBlock.GetComponent<DistanceJoint2D>().maxDistanceOnly = false;
+        NewElement = Instantiate(RopePrefab, firstBlock.position, Quaternion.identity, ElementsParent);
+        NewElement.GetComponent<Element>().type = Element.ElementsType.Rope;
+        NewElement.GetComponent<Element>().SetAttachedBlocks(firstBlock, secondBlock);
+    }
+    void PlacePlank()
+    {
+        firstBlock.gameObject.AddComponent<FixedJoint2D>();
+        firstBlock.GetComponent<FixedJoint2D>().connectedBody = secondBlock.GetComponent<Rigidbody2D>();
+        firstBlock.GetComponent<FixedJoint2D>().enableCollision = true;
+        NewElement = Instantiate(RopePrefab, firstBlock.position, Quaternion.identity, ElementsParent);
+        NewElement.GetComponent<Element>().type = Element.ElementsType.Plank;
+        NewElement.GetComponent<Element>().SetAttachedBlocks(firstBlock, secondBlock);
+    }
+    void PlaceRod()
+    {
+        firstBlock.gameObject.AddComponent<DistanceJoint2D>();
+        firstBlock.GetComponent<DistanceJoint2D>().connectedBody = secondBlock.GetComponent<Rigidbody2D>();
+        firstBlock.GetComponent<DistanceJoint2D>().enableCollision = true;
+        NewElement = Instantiate(RopePrefab, firstBlock.position, Quaternion.identity, ElementsParent);
+        NewElement.GetComponent<Element>().type = Element.ElementsType.Rod;
+        NewElement.GetComponent<Element>().SetAttachedBlocks(firstBlock, secondBlock);
+    }
+    void PlaceTendeur()
+    {
+        firstBlock.gameObject.AddComponent<DistanceJoint2D>();
+        firstBlock.GetComponent<DistanceJoint2D>().connectedBody = secondBlock.GetComponent<Rigidbody2D>();
+        firstBlock.GetComponent<DistanceJoint2D>().enableCollision = true;
+        firstBlock.GetComponent<DistanceJoint2D>().maxDistanceOnly = false;
+        NewElement = Instantiate(RopePrefab, firstBlock.position, Quaternion.identity, ElementsParent);
+        NewElement.GetComponent<Element>().type = Element.ElementsType.Tendeur;
+        NewElement.GetComponent<Element>().SetAttachedBlocks(firstBlock, secondBlock);
     }
 }
