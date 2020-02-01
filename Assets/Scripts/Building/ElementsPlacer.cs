@@ -78,7 +78,7 @@ public class ElementsPlacer : MonoBehaviour
         {
             isPlacing = false;
             Debug.DrawLine(firstBlock.position, secondBlock.position, Color.red);
-            PlaceTendeur();
+            PlacePlank();
             ResetSelection();
         }
 
