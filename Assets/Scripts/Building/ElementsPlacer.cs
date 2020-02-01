@@ -7,6 +7,9 @@ public class ElementsPlacer : MonoBehaviour
     public static ElementsPlacer instance;
     private void Awake() { instance = this; }
 
+    Vector2 mousePos;
+    [SerializeField] Camera myCamera = default;
+
     public bool isPlacing;
     bool isFirstBlockSelected;
     bool isSecondBlockSelected;
@@ -23,21 +26,35 @@ public class ElementsPlacer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mousePos = myCamera.ScreenToWorldPoint(Input.mousePosition);
         Placing();
+        if (Input.GetMouseButtonDown(0)) MouseDown();
+        if (Input.GetMouseButtonUp(0)) MouseUp();
     }
 
-    private void OnMouseDown()
+    private void MouseDown()
     {
-        if (isPlacing && !isFirstBlockSelected && ac)
+        if (actualBlock == null) { ResetSelection(); return; }
+
+        if (isPlacing && !isFirstBlockSelected)
         {
+            Debug.Log("First Block Selected");
             firstBlock = actualBlock;
             isFirstBlockSelected = true;
         }
     }
-    private void OnMouseUp()
+    private void MouseUp()
     {
+        if (actualBlock == null) { ResetSelection(); return; }
+
         if (isPlacing && isFirstBlockSelected && !isSecondBlockSelected)
         {
+            if(firstBlock == actualBlock)
+            {
+                ResetSelection();
+                return;
+            }
+            Debug.Log("Sedond Block Selected");
             secondBlock = actualBlock;
             isSecondBlockSelected = true;
         }
@@ -47,12 +64,21 @@ public class ElementsPlacer : MonoBehaviour
     {
         if (isPlacing && isFirstBlockSelected && !isSecondBlockSelected)
         {
-
         }
         else if (isPlacing && isFirstBlockSelected && isSecondBlockSelected)
         {
             isPlacing = false;
+
+            ResetSelection();
         }
 
+    }
+
+    private void ResetSelection()
+    {
+        firstBlock = null;
+        secondBlock = null;
+        isFirstBlockSelected = false;
+        isSecondBlockSelected = false;
     }
 }
