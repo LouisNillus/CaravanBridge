@@ -10,9 +10,9 @@ public class ElementsPlacer : MonoBehaviour
     public bool isPlacing;
     bool isFirstBlockSelected;
     bool isSecondBlockSelected;
-    Transform firstBox;
-    Transform secondBox;
-    public Transform actualBox;
+    Transform firstBlock;
+    Transform secondBlock;
+    public Transform actualBlock;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class ElementsPlacer : MonoBehaviour
     {
         if (isPlacing && !isFirstBlockSelected)
         {
-            firstBox = actualBox;
+            firstBlock = actualBlock;
             isFirstBlockSelected = true;
         }
     }
@@ -45,7 +45,7 @@ public class ElementsPlacer : MonoBehaviour
     {
         if (isPlacing && isFirstBlockSelected && !isSecondBlockSelected)
         {
-            secondBox = actualBox;
+            secondBlock = actualBlock;
             isSecondBlockSelected = true;
         }
     }
