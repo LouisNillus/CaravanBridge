@@ -26,10 +26,10 @@ public class MovingBehaviour : MonoBehaviour
     // Update
     void Update()
     {
-        Debug.Log(transform.position.x);
+
     }
 
-    //FixedUpdate
+    // FixedUpdate
     void FixedUpdate()
     {
         transform.position += new Vector3( -1 * Time.deltaTime * racerType.forceApplied, 0, 0);

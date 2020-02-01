@@ -17,18 +17,23 @@ public class Block : MonoBehaviour
     private void OnMouseEnter()
     {
         ElementsPlacer.instance.actualBlock = transform;
+
+        this.GetComponent<SpriteRenderer>().color = Color.cyan;
+
     }
 
     private void OnMouseExit()
     {
         ElementsPlacer.instance.actualBlock = null;
+
+        this.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private void OnMouseOver()
     {
         if(CheckBlock())
         {
-            Debug.Log(0);
+            //Code
         }
     }
 
