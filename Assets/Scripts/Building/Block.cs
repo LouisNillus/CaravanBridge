@@ -26,7 +26,24 @@ public class Block : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (ElementsPlacer.instance.actualBlock != transform)
-            ElementsPlacer.instance.actualBlock = transform;
+        if(CheckBlock())
+        {
+            Debug.Log(0);
+        }
     }
+
+    private bool CheckBlock()
+    {
+        if (ElementsPlacer.instance.actualBlock != transform)
+        {
+            ElementsPlacer.instance.actualBlock = transform;
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+
 }
