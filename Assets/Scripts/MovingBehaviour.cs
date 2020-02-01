@@ -7,7 +7,7 @@ public class MovingBehaviour : MonoBehaviour
 
     public RacerTyper racerType;
     private Rigidbody2D rb;
-  
+
 
     // Start
     void Start()
@@ -26,14 +26,15 @@ public class MovingBehaviour : MonoBehaviour
     // Update
     void Update()
     {
-        
+        Debug.Log(transform.position.x);
     }
 
     //FixedUpdate
     void FixedUpdate()
     {
+        transform.position += new Vector3(Time.deltaTime * racerType.forceApplied, 0, 0);
         //Movement();
-        MovementBis();
+        //MovementBis();
     }
 
     public void Movement()
@@ -49,7 +50,7 @@ public class MovingBehaviour : MonoBehaviour
         }
     }
 
-    public void MovementBis()
+    /*public void MovementBis()
     {
         switch (racerType.direction)
         {
@@ -60,5 +61,7 @@ public class MovingBehaviour : MonoBehaviour
                 rb.velocity = (Vector2.right * racerType.forceApplied * Time.deltaTime);
                 break;
         }
-    }
+    }*/
+
+
 }
