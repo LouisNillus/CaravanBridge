@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Caravan
   m_EditorClassIdentifier: 
   sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  direction: 0
+  direction: 1
   forceApplied: 2
   mass: 1
   gravity: 1

@@ -32,8 +32,8 @@ public class MovingBehaviour : MonoBehaviour
     // FixedUpdate
     void FixedUpdate()
     {
-        transform.position += new Vector3( -1 * Time.deltaTime * racerType.forceApplied, 0, 0);
-        //Movement();
+
+        Movement();
         //MovementBis();
     }
 
@@ -42,10 +42,12 @@ public class MovingBehaviour : MonoBehaviour
         switch (racerType.direction)
         {
             case RacerTyper.Direction.Left:
-                this.transform.Translate(Vector3.left * Time.deltaTime * racerType.forceApplied);
+                transform.position += new Vector3(-1 * Time.deltaTime * racerType.forceApplied, 0, 0);
+                //this.transform.Translate(Vector3.left * Time.deltaTime * racerType.forceApplied);
                 break;
             case RacerTyper.Direction.Right:
-                this.transform.Translate(Vector3.right * Time.deltaTime * racerType.forceApplied);
+                transform.position += new Vector3(Time.deltaTime * racerType.forceApplied, 0, 0);
+                //this.transform.Translate(Vector3.right * Time.deltaTime * racerType.forceApplied);
                 break;
         }
     }
