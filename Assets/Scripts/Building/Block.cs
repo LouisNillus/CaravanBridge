@@ -16,17 +16,17 @@ public class Block : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        ElementsPlacer.instance.actualBox = transform;
+        ElementsPlacer.instance.actualBlock = transform;
     }
 
     private void OnMouseExit()
     {
-        ElementsPlacer.instance.actualBox = null;
+        ElementsPlacer.instance.actualBlock = null;
     }
 
     private void OnMouseOver()
     {
-        if (ElementsPlacer.instance.actualBox != transform)
-            ElementsPlacer.instance.actualBox = transform;
+        if (ElementsPlacer.instance.actualBlock != transform)
+            ElementsPlacer.instance.actualBlock = transform;
     }
 }
